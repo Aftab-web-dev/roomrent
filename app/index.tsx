@@ -77,10 +77,6 @@ const Index = () => {
           <AdjustmentsHorizontalIcon size={24} color="#fff" />
         </LinearGradient>
       </View>
-          <TouchableOpacity onPress={() => router.push("/Details/Details")}>
-              <Text>Hello</Text>
-            </TouchableOpacity>
-
       <ScrollView style={styles.categoryScroll} horizontal={true} showsHorizontalScrollIndicator={false}>
         {data.map((curr, index) => (
           <TouchableOpacity key={index} onPress={() => setSelectedCategory(curr)}>
@@ -111,11 +107,16 @@ const Index = () => {
         <ScrollView style={styles.imageScroll} horizontal={true} showsHorizontalScrollIndicator={false}>
           {imagedata.map((curr, index) => (
             <View key={index} style={styles.imageCard}>
+              <TouchableOpacity    onPress={() => router.push({
+                            pathname: "/Details/Details",
+                            params: { image: curr.image, title: curr.title, place: curr.place }
+                        })}>
               <Image
                 source={{ uri: curr.image }}
                 style={styles.image}
                 resizeMode='cover'
               />
+              </TouchableOpacity>
               <View style={styles.imageInfoBox}>
                 <MapPinIcon size={16} color="#fff" />
                 <Text style={styles.imageInfoText}>{curr.kms}</Text>

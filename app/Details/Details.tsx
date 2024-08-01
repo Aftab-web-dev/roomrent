@@ -3,14 +3,14 @@ import React from 'react';
 import { ChevronLeftIcon, PhoneIcon, ChatBubbleBottomCenterIcon } from "react-native-heroicons/solid";
 import { BookmarkIcon, HomeIcon, HomeModernIcon, UserCircleIcon } from "react-native-heroicons/outline";
 import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router';
-
+import { router, useLocalSearchParams } from 'expo-router';
 const Details = () => {
+    const { image, place ,title } = useLocalSearchParams();
     return (
         <SafeAreaView>
             <View style={styles.container}>
                 <View style={styles.imageWrapper}>
-                    <Image style={styles.image} source={{ uri: "https://fastly.picsum.photos/id/866/536/354.jpg?hmac=tGofDTV7tl2rprappPzKFiZ9vDh5MKj39oa2D--gqhA" }} />
+                    <Image style={styles.image}   source={{ uri: image }} />
                     <View style={styles.header}>
                         <View style={styles.headerContent}>
                             <TouchableOpacity onPress={() => router.back()}>
@@ -34,8 +34,8 @@ const Details = () => {
                         style={styles.imageGradient}
                     />
                     <View style={styles.info}>
-                        <Text style={styles.title}>Dreamsville House</Text>
-                        <Text style={styles.description}>Jl. Sultan Iskandar Muda, Jakarta selatan</Text>
+                        <Text style={styles.title}>{title}</Text>
+                        <Text style={styles.description}>{place}</Text>
                         <View style={styles.details}>
                             <View style={styles.detailItem}>
                                 <LinearGradient
