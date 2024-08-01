@@ -1,6 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Image  } from 'react-native';
 import { BellIcon, MagnifyingGlassIcon, AdjustmentsHorizontalIcon, MapPinIcon , ChevronDownIcon } from "react-native-heroicons/outline";
 import { HomeIcon } from "react-native-heroicons/solid";
 
@@ -76,6 +77,9 @@ const Index = () => {
           <AdjustmentsHorizontalIcon size={24} color="#fff" />
         </LinearGradient>
       </View>
+          <TouchableOpacity onPress={() => router.push("/Details/Details")}>
+              <Text>Hello</Text>
+            </TouchableOpacity>
 
       <ScrollView style={styles.categoryScroll} horizontal={true} showsHorizontalScrollIndicator={false}>
         {data.map((curr, index) => (
@@ -101,6 +105,8 @@ const Index = () => {
           <Text style={styles.sectionTitle}>Near from you</Text>
           <Text style={styles.sectionSubtitle}>See more</Text>
         </View>
+
+        
 
         <ScrollView style={styles.imageScroll} horizontal={true} showsHorizontalScrollIndicator={false}>
           {imagedata.map((curr, index) => (
